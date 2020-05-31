@@ -19,8 +19,8 @@ public class DataReading {
         	 String fileContent = new String (Files.readAllBytes(Paths.get(filePath)));
         	 JSONObject obj  = new JSONObject(fileContent);
         	 JSONArray arr = obj.getJSONArray(JSON_ARRAY);
-        	 System.out.print("\t\t Date\t\t| Reported cases |   Deaths");
-        
+        	 
+		 System.out.print("\t\t Date\t\t| Reported cases |   Deaths");
         	 for(int i = 0; i < arr.length(); i ++) {
         	   if(arr.getJSONObject(i).getString(COUNTRY).equals("Sri_Lanka")) { 
         	        System.out.println("\n\t\t"+arr.getJSONObject(i).getString(DATE)+"\t\t"+ arr.getJSONObject(i).getString(CASES)+"\t\t"+arr.getJSONObject(i).getString(DEATHS));
