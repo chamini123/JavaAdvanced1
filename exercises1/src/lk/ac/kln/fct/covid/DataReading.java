@@ -3,7 +3,6 @@ package lk.ac.kln.fct.covid;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -15,35 +14,20 @@ public class DataReading {
 	private static final String CASES="cases";
 	private static final String DEATHS="deaths";
 
-
-
-
-
-public void readData(String filePath) {
-	try {
-        String fileContent = new String (Files.readAllBytes(Paths.get(filePath)));
-        JSONObject obj  = new JSONObject(fileContent);
-        JSONArray arr = obj.getJSONArray(JSON_ARRAY);
+        public void readData(String filePath) {
+		try {
+        	 String fileContent = new String (Files.readAllBytes(Paths.get(filePath)));
+        	 JSONObject obj  = new JSONObject(fileContent);
+        	 JSONArray arr = obj.getJSONArray(JSON_ARRAY);
+        	 System.out.print("\t\t Date\t\t| Reported cases |   Deaths");
         
-        System.out.print("\t\t Date\t\t| Reported cases |   Deaths");
-        
-        
-        for(int i = 0; i < arr.length(); i ++) {
-        	
-        	  if(arr.getJSONObject(i).getString(COUNTRY).equals("Sri_Lanka")) {
-        		 
-        	     System.out.println("\n\t\t"+arr.getJSONObject(i).getString(DATE)+"\t\t"+ arr.getJSONObject(i).getString(CASES)+"\t\t"+arr.getJSONObject(i).getString(DEATHS));
-            
-              }
-        	//TODO Improve this to print required data.
-        }
-        
-        
-    } catch(IOException e) {
-        e.printStackTrace();
+        	 for(int i = 0; i < arr.length(); i ++) {
+        	   if(arr.getJSONObject(i).getString(COUNTRY).equals("Sri_Lanka")) { 
+        	        System.out.println("\n\t\t"+arr.getJSONObject(i).getString(DATE)+"\t\t"+ arr.getJSONObject(i).getString(CASES)+"\t\t"+arr.getJSONObject(i).getString(DEATHS));
+                   }
+		 }
+    	      } catch(IOException e) {
+                 e.printStackTrace();
+           }	
     }
-	// TODO Auto-generated method stub
-	
-}
-
 }
